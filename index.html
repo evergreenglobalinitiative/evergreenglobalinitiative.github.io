@@ -933,7 +933,234 @@
                 margin-top: 10px;
             }
         }
-    </style>
+    /* FINAL MOBILE RESPONSIVE FIX */
+
+@media (max-width: 600px) {
+
+    html,
+    body {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    header {
+        height: auto;
+        min-height: 70px;
+        padding: 15px 22px;
+    }
+
+    .logo {
+        font-size: 18px;
+        max-width: 220px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .hero {
+        min-height: 620px;
+        padding: 70px 25px;
+        text-align: left;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+        line-height: 1.08;
+    }
+
+    .hero p {
+        font-size: 16px;
+        line-height: 1.65;
+    }
+
+    .button {
+        padding: 13px 20px;
+        font-size: 13px;
+    }
+
+
+    /* Focus Areas */
+
+    .section {
+        padding: 75px 22px;
+    }
+
+    .section h2 {
+        font-size: 34px;
+    }
+
+    .section-intro {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .card {
+        padding: 28px 22px;
+    }
+
+
+    /* About */
+
+    .about {
+        padding: 75px 22px;
+    }
+
+    .about h2 {
+        font-size: 34px;
+        line-height: 1.15;
+    }
+
+    .about p {
+        font-size: 15px;
+        line-height: 1.75;
+    }
+
+
+    /* SDGs */
+
+    .sdg-section {
+        padding: 75px 22px;
+    }
+
+    .sdg-section h2 {
+        font-size: 35px;
+    }
+
+
+    /* Activities */
+
+    .activities {
+        padding: 80px 22px;
+    }
+
+    .activities-header {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin-bottom: 50px;
+    }
+
+    .activities-header h2 {
+        font-size: 40px;
+        line-height: 1.08;
+    }
+
+    .activities-header p {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .activity-feature {
+        display: flex;
+        flex-direction: column;
+        min-height: auto;
+        border-radius: 18px;
+    }
+
+    .activity-feature.reverse .activity-image,
+    .activity-feature.reverse .activity-content {
+        order: initial;
+    }
+
+    .activity-image {
+        min-height: 260px;
+        width: 100%;
+    }
+
+    .activity-content {
+        padding: 35px 25px;
+    }
+
+    .activity-content h3 {
+        font-size: 29px;
+    }
+
+    .activity-content p {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .activities-statement {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        margin-top: 50px;
+    }
+
+
+    /* Internship */
+
+    .internship {
+        padding: 75px 22px;
+    }
+
+    .internship h2 {
+        font-size: 34px;
+        line-height: 1.15;
+    }
+
+    .internship p {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .deadline {
+        font-size: 17px;
+    }
+
+
+    /* Contact */
+
+    .contact {
+        padding: 80px 22px;
+    }
+
+    .contact-inner h2 {
+        font-size: 42px;
+        line-height: 1.08;
+    }
+
+    .contact-inner p {
+        font-size: 14px;
+        line-height: 1.75;
+    }
+
+    .contact-actions {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .contact-button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .contact-link {
+        font-size: 13px;
+    }
+
+
+    /* Footer */
+
+    footer {
+        padding: 30px 20px;
+    }
+
+    footer p {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+}</style>
 </head>
 
 <body>
