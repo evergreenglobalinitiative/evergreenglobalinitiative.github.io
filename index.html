@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EverGreen Global Initiative | EGI</title>
+
+    <style>
+        * {
+            scroll-behavior: smooth;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #183b24;
+            background: #ffffff;
+        }
+
+        /* Navigation */
+
+        header {
+            height: 75px;
+            padding: 0 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #16753a;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin-left: 30px;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #16753a;
+        }
+
+        /* Hero */
+
+        .hero {
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+            padding: 80px 7%;
+            background: linear-gradient(
+                rgba(15, 75, 35, 0.78),
+                rgba(15, 75, 35, 0.78)
+            ),
+            url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=2000&q=80");
+
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            line-height: 1.08;
+            margin-bottom: 25px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 28px;
+            background: white;
+            color: #16753a;
+            text-decoration: none;
+            border-radius: 7px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .button.green {
+            background: #16753a;
+            color: white;
+        }
+
+        /* Focus Areas */
+
+        .section {
+            padding: 80px 7%;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .section-intro {
+            color: #66736a;
+            margin-bottom: 45px;
+            font-size: 17px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            padding: 30px 22px;
+            background: #f7faf7;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+        }
+
+        .icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            color: #16753a;
+        }
+
+        .card p {
+            color: #66736a;
+            line-height: 1.6;
+        }
+/* About Section */
+
+.about {
+    padding: 110px 7%;
+    background: #f5f8f3;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 0.9fr 1.4fr;
+    gap: 90px;
+    align-items: start;
+}
+
+.about-label {
+    color: #16753a;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.about-heading h2 {
+    font-size: 52px;
+    line-height: 1.1;
+    margin-top: 18px;
+    color: #173d25;
+}
+
+.about-heading h2 span {
+    color: #16753a;
+}
+
+.about-content {
+    border-left: 1px solid #cbd9ce;
+    padding-left: 45px;
+}
+
+.about-content p {
+    color: #5f6d64;
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 22px;
+}
+
+.about-content .about-lead {
+    font-size: 20px;
+    color: #294936;
+    line-height: 1.7;
+}
+
+.about-values {
+    max-width: 1200px;
+    margin: 80px auto 0;
+    padding-top: 30px;
+    border-top: 1px solid #d8e2da;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.about-values div {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.about-values strong {
+    font-size: 28px;
+    color: #16753a;
+}
+
+.about-values span {
+    color: #526158;
+    font-size: 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Premium Activities Section */
+
+.activities {
+    padding: 120px 7%;
+    background: #f4f7f3;
+    overflow: hidden;
+}
+
+.activities-header {
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    display: grid;
+    grid-template-columns: 0.7fr 1.3fr 1fr;
+    gap: 50px;
+    align-items: end;
+}
+
+.activities-label {
+    color: #16753a;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.activities-header h2 {
+    font-size: 58px;
+    line-height: 1.05;
+    color: #173d25;
+    font-weight: 600;
+}
+
+.activities-header h2 span {
+    color: #16753a;
+    font-style: italic;
+}
+
+.activities-header p {
+    color: #66736a;
+    font-size: 15px;
+    line-height: 1.8;
+    max-width: 390px;
+}
+
+.activities-showcase {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.activity-feature {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 390px;
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid #e1e9e2;
+    transition: 0.4s ease;
+}
+
+.activity-feature:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 25px 55px rgba(24, 59, 36, 0.12);
+}
+
+.activity-feature.reverse .activity-image {
+    order: 2;
+}
+
+.activity-feature.reverse .activity-content {
+    order: 1;
+}
+
+.activity-image {
+    position: relative;
+    min-height: 390px;
+    display: flex;
+    align-items: flex-end;
+    padding: 35px;
+    overflow: hidden;
+}
+
+.activity-image-one {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(22,117,58,0.95),
+            rgba(8,60,29,0.75)
+        ),
+        url("https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=85");
+    background-size: cover;
+    background-position: center;
+}
+
+.activity-image-two {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(30,110,75,0.9),
+            rgba(5,55,35,0.8)
+        ),
+        url("https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=1200&q=85");
+    background-size: cover;
+    background-position: center;
+}
+
+.activity-image-three {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(20,100,65,0.92),
+            rgba(4,50,32,0.8)
+        ),
+        url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1200&q=85");
+    background-size: cover;
+    background-position: center;
+}
+
+.activity-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        transparent 30%,
+        rgba(0,30,15,0.55)
+    );
+}
+
+.activity-index {
+    position: absolute;
+    top: 30px;
+    left: 35px;
+    color: white;
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.activity-symbol {
+    position: relative;
+    z-index: 2;
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.16);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 16px;
+    font-size: 31px;
+}
+
+.activity-content {
+    padding: 55px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.activity-category {
+    color: #16753a;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 2.5px;
+    margin-bottom: 20px;
+}
+
+.activity-content h3 {
+    font-size: 38px;
+    line-height: 1.08;
+    color: #183b24;
+    font-weight: 600;
+    margin-bottom: 22px;
+}
+
+.activity-content p {
+    color: #66736a;
+    font-size: 15px;
+    line-height: 1.8;
+    max-width: 440px;
+}
+
+.activity-line {
+    width: 45px;
+    height: 2px;
+    background: #16753a;
+    margin: 28px 0 18px;
+}
+
+.activity-impact {
+    color: #526158;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.activities-statement {
+    max-width: 1200px;
+    margin: 75px auto 0;
+    padding-top: 30px;
+    border-top: 1px solid #d6e0d7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.activities-statement span {
+    color: #16753a;
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.activities-statement p {
+    color: #6a756d;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+.activities-statement strong {
+    color: #183b24;
+}
+
+@media (max-width: 900px) {
+
+    .activities-header {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .activities-header h2 {
+        font-size: 48px;
+    }
+
+    .activity-feature {
+        grid-template-columns: 1fr;
+    }
+
+    .activity-feature.reverse .activity-image {
+        order: 1;
+    }
+
+    .activity-feature.reverse .activity-content {
+        order: 2;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .activities {
+        padding: 80px 25px;
+    }
+
+    .activities-header {
+        margin-bottom: 55px;
+    }
+
+    .activities-header h2 {
+        font-size: 40px;
+    }
+
+    .activity-image {
+        min-height: 280px;
+    }
+
+    .activity-content {
+        padding: 35px 28px;
+    }
+
+    .activity-content h3 {
+        font-size: 30px;
+    }
+
+    .activities-statement {
+        gap: 15px;
+    }
+
+    .activities-statement p {
+        font-size: 12px;
+        text-align: center;
+    }
+
+}/* SDG Section */
+
+.sdg-section {
+    padding: 110px 7%;
+    background: #ffffff;
+}
+
+.sdg-heading {
+    max-width: 720px;
+    margin: 0 auto 65px;
+    text-align: center;
+}
+
+.sdg-heading span {
+    color: #16753a;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.sdg-heading h2 {
+    margin-top: 15px;
+    font-size: 48px;
+    color: #173d25;
+}
+
+.sdg-heading p {
+    margin-top: 18px;
+    color: #66736a;
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+
+.sdg-grid {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+
+.sdg-card {
+    position: relative;
+    padding: 32px;
+    min-height: 245px;
+    background: #ffffff;
+    border: 1px solid #e5ebe6;
+    border-radius: 18px;
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+
+.sdg-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+}
+
+
+.sdg-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 40px rgba(24, 59, 36, 0.12);
+}
+
+
+.sdg-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+
+.sdg-icon {
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+
+.sdg-label {
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #89958d;
+}
+
+
+.sdg-card h3 {
+    color: #183b24;
+    font-size: 21px;
+    margin-bottom: 12px;
+}
+
+
+.sdg-card p {
+    color: #66736a;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+
+/* SDG Colors */
+
+.sdg-2::before,
+.sdg-2 .sdg-icon {
+    background: #dda63a;
+}
+
+.sdg-6::before,
+.sdg-6 .sdg-icon {
+    background: #26bde2;
+}
+
+.sdg-11::before,
+.sdg-11 .sdg-icon {
+    background: #fd9d24;
+}
+
+.sdg-12::before,
+.sdg-12 .sdg-icon {
+    background: #bf8b2e;
+}
+
+.sdg-13::before,
+.sdg-13 .sdg-icon {
+    background: #3f7e44;
+}
+
+
+/* SDG Footer */
+
+.sdg-footer {
+    margin-top: 60px;
+    text-align: center;
+    color: #718078;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.sdg-footer span:nth-child(2),
+.sdg-footer span:nth-child(4) {
+    color: #16753a;
+    margin: 0 10px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 900px) {
+
+    .sdg-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .sdg-section {
+        padding: 75px 25px;
+    }
+
+    .sdg-heading h2 {
+        font-size: 38px;
+    }
+
+    .sdg-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sdg-card {
+        min-height: auto;
+    }
+
+}
+        /* Internship */
+
+        .internship {
+            padding: 80px 7%;
+            background: #16753a;
+            color: white;
+            text-align: center;
+        }
+
+        .internship h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .internship p {
+            max-width: 750px;
+            margin: 10px auto;
+            line-height: 1.7;
+        }
+
+        .deadline {
+            margin: 25px 0;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* Premium Contact Section */
+
+.contact {
+    position: relative;
+    padding: 120px 7%;
+    background: #123b23;
+    color: white;
+    overflow: hidden;
+}
+
+
+.contact-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 850px;
+    margin: auto;
+    text-align: center;
+}
+
+
+.contact-label {
+    color: #9ac7a4;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+}
+
+
+.contact-inner h2 {
+    font-size: 62px;
+    line-height: 1.05;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+
+.contact-inner h2 span {
+    color: #b7d9bd;
+    font-style: italic;
+}
+
+
+.contact-inner p {
+    max-width: 650px;
+    margin: auto;
+    color: #d1dfd4;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+
+.contact-actions {
+    margin-top: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+}
+
+
+.contact-button {
+    display: inline-block;
+    padding: 15px 25px;
+    background: white;
+    color: #16753a;
+    text-decoration: none;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+
+.contact-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+
+.contact-link {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+    padding-bottom: 5px;
+}
+
+
+.contact-decoration {
+    position: absolute;
+    right: -80px;
+    bottom: -150px;
+    width: 400px;
+    height: 400px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 50%;
+}
+
+
+.contact-decoration::before {
+    content: "";
+    position: absolute;
+    inset: 45px;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 50%;
+}
+
+
+.contact-decoration span {
+    position: absolute;
+    right: 145px;
+    top: 150px;
+    color: rgba(255,255,255,0.08);
+    font-size: 50px;
+    font-weight: bold;
+}
+
+
+@media (max-width: 600px) {
+
+    .contact {
+        padding: 85px 25px;
+    }
+
+    .contact-inner h2 {
+        font-size: 43px;
+    }
+
+    .contact-actions {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+}/* Footer */
+
+        footer {
+            background: #102c1a;
+            color: white;
+            text-align: center;
+            padding: 35px;
+        }
+
+        footer p {
+            margin: 8px;
+        }
+
+        /* Mobile */
+
+        @media (max-width: 900px) {
+
+            nav {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 45px;
+            }
+
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+.about-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+}
+
+.about-heading h2 {
+    font-size: 40px;
+}
+
+.about-content {
+    border-left: none;
+    border-top: 1px solid #cbd9ce;
+    padding-left: 0;
+    padding-top: 30px;
+}
+
+.about-values {
+    grid-template-columns: 1fr;
+    margin-top: 50px;
+}
+            .hero {
+                padding: 60px 25px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .section {
+                padding: 60px 25px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .button {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        EverGreen Global Initiative
+    </div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#focus">Focus Areas</a>
+        <a href="#activities">Activities</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+</header>
+
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <h1>
+    Growing a Greener Future, Together.
+</h1>
+
+        <p>
+    EverGreen Global Initiative (EGI) brings students, youth,
+    volunteers and professionals together to turn environmental
+    awareness into meaningful action for a greener and more
+    sustainable future.
+</p>
+
+        <a href="#" class="button green">
+            Get Involved
+        </a>
+
+        <a href="#focus" class="button">
+            Explore EGI
+        </a>
+
+    </div>
+
+</section>
+
+
+<section class="section" id="focus">
+
+    <h2>Our Focus Areas</h2>
+
+    <p class="section-intro">
+        Turning environmental awareness into meaningful action.
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">🌳</div>
+            <h3>Plantation</h3>
+            <p>Promoting plantation activities and greener communities.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🌍</div>
+            <h3>Climate Action</h3>
+            <p>Encouraging practical action against climate change.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">💧</div>
+            <h3>Water Conservation</h3>
+            <p>Promoting responsible water use and conservation.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🌾</div>
+            <h3>Sustainable Agriculture</h3>
+            <p>Supporting agriculture that protects our future.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🌱</div>
+            <h3>Environmental Awareness</h3>
+            <p>Creating awareness and encouraging environmental responsibility.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">👥</div>
+            <h3>Youth Development</h3>
+            <p>Engaging young people in meaningful environmental action.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">♻️</div>
+            <h3>Sustainability</h3>
+            <p>Promoting sustainable choices for people and the planet.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="about" id="about">
+    <section class="about" id="about">
+
+    <div class="about-container">
+
+        <div class="about-heading">
+
+            <span class="about-label">WHO WE ARE</span>
+
+            <h2>
+                Small Actions.<br>
+                <span>Lasting Impact.</span>
+            </h2>
+
+        </div>
+
+
+        <div class="about-content">
+
+            <p class="about-lead">
+                EverGreen Global Initiative (EGI) is a youth-driven
+                initiative established in 2026 with a vision to inspire
+                people to take meaningful action for a greener and
+                more sustainable future.
+            </p>
+
+            <p>
+                We bring together students, youth, volunteers,
+                professionals and communities to transform environmental
+                awareness into practical action.
+            </p>
+
+            <p>
+                From planting trees and conserving water to promoting
+                climate action, environmental awareness and sustainable
+                agriculture, EGI believes that meaningful change begins
+                when people choose to act.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="about-values">
+
+        <div>
+            <strong>01</strong>
+            <span>People</span>
+        </div>
+
+        <div>
+            <strong>02</strong>
+            <span>Planet</span>
+        </div>
+
+        <div>
+            <strong>03</strong>
+            <span>Progress</span>
+        </div>
+
+    </div>
+
+</section>
+<section class="sdg-section" id="sdgs">
+
+    <div class="sdg-heading">
+        <span>OUR GLOBAL COMMITMENT</span>
+
+        <h2>Our SDG Focus</h2>
+
+        <p>
+            EGI aligns its initiatives with the United Nations Sustainable
+            Development Goals to create meaningful environmental and social impact.
+        </p>
+    </div>
+
+
+    <div class="sdg-grid">
+
+        <!-- SDG 2 -->
+        <div class="sdg-card sdg-2">
+
+            <div class="sdg-top">
+                <span class="sdg-icon">02</span>
+                <span class="sdg-label">SDG 02</span>
+            </div>
+
+            <h3>Zero Hunger</h3>
+
+            <p>
+                Supporting sustainable agriculture, resilient food systems
+                and a more sustainable future for communities.
+            </p>
+
+        </div>
+
+
+        <!-- SDG 6 -->
+        <div class="sdg-card sdg-6">
+
+            <div class="sdg-top">
+                <span class="sdg-icon">06</span>
+                <span class="sdg-label">SDG 06</span>
+            </div>
+
+            <h3>Clean Water & Sanitation</h3>
+
+            <p>
+                Promoting water conservation, responsible water use and
+                greater awareness of water security.
+            </p>
+
+        </div>
+
+
+        <!-- SDG 11 -->
+        <div class="sdg-card sdg-11">
+
+            <div class="sdg-top">
+                <span class="sdg-icon">11</span>
+                <span class="sdg-label">SDG 11</span>
+            </div>
+
+            <h3>Sustainable Cities & Communities</h3>
+
+            <p>
+                Encouraging greener, cleaner and more resilient communities
+                through practical environmental action.
+            </p>
+
+        </div>
+
+
+        <!-- SDG 12 -->
+        <div class="sdg-card sdg-12">
+
+            <div class="sdg-top">
+                <span class="sdg-icon">12</span>
+                <span class="sdg-label">SDG 12</span>
+            </div>
+
+            <h3>Responsible Consumption</h3>
+
+            <p>
+                Encouraging responsible choices, reducing waste and promoting
+                sustainable lifestyles.
+            </p>
+
+        </div>
+
+
+        <!-- SDG 13 -->
+        <div class="sdg-card sdg-13">
+
+            <div class="sdg-top">
+                <span class="sdg-icon">13</span>
+                <span class="sdg-label">SDG 13</span>
+            </div>
+
+            <h3>Climate Action</h3>
+
+            <p>
+                Inspiring practical action, awareness and community
+                participation to address climate change.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="sdg-footer">
+        <span>Think Global</span>
+        <span>•</span>
+        <span>Act Local</span>
+        <span>•</span>
+        <span>Create Impact</span>
+    </div>
+
+</section>
+    </p>
+<section class="activities" id="activities">
+
+    <div class="activities-header">
+
+        <div class="activities-label">
+            OUR WORK
+        </div>
+
+        <h2>
+            Turning <span>Ideas</span><br>
+            Into Action.
+        </h2>
+
+        <p>
+            From planting trees to inspiring climate action, EGI creates
+            opportunities for people to turn environmental awareness
+            into meaningful action.
+        </p>
+
+    </div>
+
+
+    <div class="activities-showcase">
+
+        <!-- Activity 01 -->
+
+        <div class="activity-feature">
+
+            <div class="activity-image activity-image-one">
+
+                <div class="activity-overlay"></div>
+
+                <span class="activity-index">01</span>
+
+                <span class="activity-symbol">🌳</span>
+
+            </div>
+
+
+            <div class="activity-content">
+
+                <span class="activity-category">
+                    GREEN COMMUNITIES
+                </span>
+
+                <h3>
+                    Plantation<br>
+                    Activities
+                </h3>
+
+                <p>
+                    Encouraging people and communities to plant,
+                    protect and care for trees while creating
+                    greener and healthier spaces.
+                </p>
+
+                <div class="activity-line"></div>
+
+                <span class="activity-impact">
+                    Creating greener spaces
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Activity 02 -->
+
+        <div class="activity-feature reverse">
+
+            <div class="activity-image activity-image-two">
+
+                <div class="activity-overlay"></div>
+
+                <span class="activity-index">02</span>
+
+                <span class="activity-symbol">♻️</span>
+
+            </div>
+
+
+            <div class="activity-content">
+
+                <span class="activity-category">
+                    RESPONSIBLE LIVING
+                </span>
+
+                <h3>
+                    Plastic-Free<br>
+                    Campaigns
+                </h3>
+
+                <p>
+                    Promoting responsible consumption and encouraging
+                    individuals and communities to reduce unnecessary
+                    plastic use.
+                </p>
+
+                <div class="activity-line"></div>
+
+                <span class="activity-impact">
+                    Moving towards cleaner communities
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Activity 03 -->
+
+        <div class="activity-feature">
+
+            <div class="activity-image activity-image-three">
+
+                <div class="activity-overlay"></div>
+
+                <span class="activity-index">03</span>
+
+                <span class="activity-symbol">🌍</span>
+
+            </div>
+
+
+            <div class="activity-content">
+
+                <span class="activity-category">
+                    CLIMATE ACTION
+                </span>
+
+                <h3>
+                    Climate &<br>
+                    Environmental Awareness
+                </h3>
+
+                <p>
+                    Engaging young people and communities through
+                    awareness, education and practical environmental
+                    action.
+                </p>
+
+                <div class="activity-line"></div>
+
+                <span class="activity-impact">
+                    Inspiring action for our planet
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="activities-statement">
+
+        <span>01</span>
+
+        <p>
+            Awareness creates understanding.
+            <strong>Action creates change.</strong>
+        </p>
+
+        <span>03</span>
+
+    </div>
+
+</section>
+
+</section>
+</section>
+<section class="internship">
+
+    <h2>EverGreen Internship Programme 2026</h2>
+<p><strong>Application Deadline: 20 August 2026</strong></p>
+    <p>
+        Take meaningful environmental action according to your own
+        schedule. Participate in plantation activities, plastic-free
+        campaigns and other sustainability activities.
+    </p>
+
+    <p>
+        No fixed site. No fixed daily timing.
+        Complete your activities and submit them before the deadline.
+    </p>
+
+    <div class="deadline">
+        Application Deadline: 20 August 2026
+    </div>
+
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfxm19wpvvskOOj4ktz7cuHI3Yox__Ib3EVRl0PmpmQwAiTsA/viewform?usp=dialog" class="button" target="_blank">
+    Apply Now
+</a>
+
+</section>
+
+<section class="contact" id="contact">
+
+    <div class="contact-inner">
+
+        <div class="contact-label">
+            CONNECT WITH EGI
+        </div>
+
+        <h2>
+            Let's Create<br>
+            <span>Impact Together.</span>
+        </h2>
+
+        <p>
+            Whether you want to volunteer, collaborate, support an initiative
+            or simply learn more about EverGreen Global Initiative,
+            there is always a way to contribute.
+        </p>
+
+        <div class="contact-actions">
+
+            <a href="https://www.facebook.com/share/164C6yvsSkL/?mibextid=wwXIfr"
+               target="_blank"
+               class="contact-button">
+                Follow EGI on Facebook
+            </a>
+
+            <a href="#activities" class="contact-link">
+                Explore Our Activities →
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="contact-decoration">
+        <span>EGI</span>
+    </div>
+
+</section>
+<footer>
+
+    <p><strong>EverGreen Global Initiative (EGI)</strong></p>
+
+    <p>Founded by Muhammad Usman Ghani | Established 2026</p>
+
+    <p>Building a greener and more sustainable future.</p>
+<p>
+    <a href="https://www.facebook.com/share/164C6yvsSkL/?mibextid=wwXIfr"
+       target="_blank"
+       style="color: white; text-decoration: none;">
+        Follow us on Facebook
+    </a>
+</p>
+</footer>
+
+</body>
+</html>
