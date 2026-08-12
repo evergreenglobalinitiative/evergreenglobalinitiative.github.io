@@ -1893,24 +1893,19 @@ earthRenderer.setSize(
 );
 
 
-/* EARTH */
+/* PREMIUM GREEN EARTH */
 
 const earthGeometry = new THREE.SphereGeometry(2, 64, 64);
 
+/* Natural Earth texture */
 const earthTexture = new THREE.TextureLoader().load(
     "https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg"
 );
 
-const earthNormal = new THREE.TextureLoader().load(
-    "https://threejs.org/examples/textures/planets/earth_normal_2048.jpg"
-);
-
-const earthMaterial = new THREE.MeshPhongMaterial({
+/* Green environmental tint */
+const earthMaterial = new THREE.MeshBasicMaterial({
     map: earthTexture,
-    bumpMap: earthNormal,
-    bumpScale: 0.035,
-    shininess: 25,
-    specular: 0x5599cc
+    color: 0x8edc9c
 });
 
 const earth = new THREE.Mesh(
@@ -1921,16 +1916,16 @@ const earth = new THREE.Mesh(
 earthScene.add(earth);
 
 
-/* ATMOSPHERE */
+/* SOFT GREEN ATMOSPHERE */
 
 const atmosphereGeometry =
     new THREE.SphereGeometry(2.08, 64, 64);
 
 const atmosphereMaterial =
     new THREE.MeshBasicMaterial({
-        color: 0x3fa9ff,
+        color: 0x55e878,
         transparent: true,
-        opacity: 0.16,
+        opacity: 0.28,
         side: THREE.BackSide
     });
 
@@ -1942,44 +1937,25 @@ const atmosphere = new THREE.Mesh(
 earthScene.add(atmosphere);
 
 
-/* CLOUDS */
+/* SUBTLE GREEN OUTER GLOW */
 
-const cloudGeometry =
-    new THREE.SphereGeometry(2.025, 64, 64);
+const glowGeometry =
+    new THREE.SphereGeometry(2.16, 64, 64);
 
-const cloudTexture = new THREE.TextureLoader().load(
-    "https://threejs.org/examples/textures/planets/earth_clouds_1024.png"
+const glowMaterial =
+    new THREE.MeshBasicMaterial({
+        color: 0x2ecc71,
+        transparent: true,
+        opacity: 0.10,
+        side: THREE.BackSide
+    });
+
+const glow = new THREE.Mesh(
+    glowGeometry,
+    glowMaterial
 );
 
-const cloudMaterial = new THREE.MeshPhongMaterial({
-    map: cloudTexture,
-    transparent: true,
-    opacity: 0.55,
-    depthWrite: false
-});
-
-const clouds = new THREE.Mesh(
-    cloudGeometry,
-    cloudMaterial
-);
-
-earthScene.add(clouds);
-
-
-/* LIGHT */
-
-const ambientLight =
-    new THREE.AmbientLight(0xffffff, 0.45);
-
-earthScene.add(ambientLight);
-
-const sunLight =
-    new THREE.DirectionalLight(0xffffff, 1.8);
-
-sunLight.position.set(5, 3, 5);
-
-earthScene.add(sunLight);
-
+earthScene.add(glow);
 
 /* CAMERA */
 
@@ -1994,9 +1970,9 @@ function animateEarth() {
 
     earth.rotation.y += 0.0025;
 
-    clouds.rotation.y += 0.0032;
-
     atmosphere.rotation.y += 0.0018;
+
+    glow.rotation.y += 0.001;
 
     earthRenderer.render(
         earthScene,
