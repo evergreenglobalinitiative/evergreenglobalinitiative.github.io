@@ -2275,56 +2275,102 @@ document.querySelectorAll("#main-nav a").forEach(link => {
     });
 
 });
-/* =========================================
-   VIRTUAL TREE PLANTING
-========================================= */
 
-const plantTreeBtn = document.getElementById("plantTreeBtn");
-const virtualTree = document.getElementById("virtualTree");
-const treeMessage = document.getElementById("treeMessage");
-const treeCount = document.getElementById("treeCount");
-
-let plantedTrees =
-    Number(localStorage.getItem("egiVirtualTrees")) || 0;
-
-treeCount.textContent = plantedTrees;
-
-
-plantTreeBtn.addEventListener("click", () => {
-
-    plantedTrees++;
-
-    localStorage.setItem(
-        "egiVirtualTrees",
-        plantedTrees
-    );
-
-    treeCount.textContent = plantedTrees;
-
-    /* Restart tree animation */
-
-    virtualTree.classList.remove("growing");
-
-    void virtualTree.offsetWidth;
-
-    virtualTree.classList.add("growing");
-
-
-    /* Restart message animation */
-
-    treeMessage.classList.remove("show");
-
-    void treeMessage.offsetWidth;
-
-    treeMessage.textContent =
-        "🌱 " + plantedTrees + " Tree" +
-        (plantedTrees === 1 ? "" : "s") +
-        " Planted!";
-
-    treeMessage.classList.add("show");
-
-});
 </script>
     
+</script><script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+  import { getFirestore } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBI8RxCZ4W7aCg4IdEmA_dO0ucENAsexX8",
+    authDomain: "evergreen-global-initiative.firebaseapp.com",
+    projectId: "evergreen-global-initiative",
+    storageBucket: "evergreen-global-initiative.firebasestorage.app",
+    messagingSenderId: "363890913099",
+    appId: "1:363890913099:web:38f8ea745193f64d55c2ce"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  window.db = db;
+</script><script type="module">
+    import {
+        doc,
+        getDoc,
+        setDoc,
+        updateDoc,
+        increment
+    } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
+
+    const treeButton = document.getElementById("plantTreeBtn");
+    const treeCount = document.getElementById("treeCount");
+    const virtualTree = document.getElementById("virtualTree");
+    const treeMessage = document.getElementById("treeMessage");
+
+    const treeRef = doc(window.db, "egi", "virtualForest");
+
+    // Load current tree count
+    async function loadTreeCount() {
+        try {
+            const snapshot = await getDoc(treeRef);
+
+            if (snapshot.exists()) {
+                treeCount.textContent = snapshot.data().count || 0;
+            } else {
+                await setDoc(treeRef, {
+                    count: 0
+                });
+
+                treeCount.textContent = "0";
+            }
+        } catch (error) {
+            console.error("Error loading tree count:", error);
+        }
+    }
+
+    // Plant tree
+    treeButton.addEventListener("click", async () => {
+
+        treeButton.disabled = true;
+
+        try {
+            await updateDoc(treeRef, {
+                count: increment(1)
+            });
+
+            const snapshot = await getDoc(treeRef);
+            const newCount = snapshot.data().count;
+
+            treeCount.textContent = newCount;
+
+            // Tree animation
+            virtualTree.classList.remove("growing");
+
+            void virtualTree.offsetWidth;
+
+            virtualTree.classList.add("growing");
+
+            // Message animation
+            treeMessage.textContent = "🌱 1 Tree Planted!";
+            treeMessage.classList.remove("show");
+
+            void treeMessage.offsetWidth;
+
+            treeMessage.classList.add("show");
+
+        } catch (error) {
+            console.error("Error planting tree:", error);
+            alert("Something went wrong. Please try again.");
+        }
+
+        setTimeout(() => {
+            treeButton.disabled = false;
+        }, 1200);
+    });
+
+    // Start
+    loadTreeCount();
 </script></body>
 </html>
