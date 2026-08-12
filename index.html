@@ -98,7 +98,75 @@
             background: #16753a;
             color: white;
         }
+/* PREMIUM ROTATING EARTH */
 
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-earth {
+    position: absolute;
+    right: 7%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 390px;
+    height: 390px;
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+#earthCanvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.hero-earth-glow {
+    position: absolute;
+    inset: -25px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(60, 180, 255, 0.18) 0%,
+        rgba(30, 130, 255, 0.08) 45%,
+        transparent 70%
+    );
+    filter: blur(12px);
+    z-index: -1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+}
+
+/* Earth mobile */
+
+@media (max-width: 900px) {
+
+    .hero-earth {
+        width: 300px;
+        height: 300px;
+        right: -70px;
+        top: 50%;
+        opacity: 0.55;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .hero-earth {
+        width: 240px;
+        height: 240px;
+        right: -75px;
+        top: 18%;
+        opacity: 0.28;
+    }
+
+}
         /* Focus Areas */
 
         .section {
@@ -959,29 +1027,61 @@
     }
 
     .hero {
-        min-height: 620px;
-        padding: 70px 25px;
-        text-align: left;
-    }
+    min-height: 620px;
+    padding: 90px 22px;
+    display: flex;
+    align-items: center;
+}
 
-    .hero-content {
-        width: 100%;
+.hero-content {
+    width: 100%;
+    max-width: 700px;
+}
+
+.hero h1 {
+    font-size: clamp(36px, 10vw, 48px);
+    line-height: 1.08;
+    margin-bottom: 22px;
+}
+
+.hero p {
+    font-size: clamp(15px, 4vw, 17px);
+    line-height: 1.7;
+    margin-bottom: 28px;
+    max-width: 600px;
+}
+
+.hero .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 13px 20px;
+    font-size: 14px;
+    margin: 6px 6px 0 0;
+}
+
+@media (max-width: 380px) {
+
+    .hero {
+        min-height: 580px;
+        padding: 75px 20px;
     }
 
     .hero h1 {
-        font-size: 42px;
-        line-height: 1.08;
+        font-size: 35px;
     }
 
     .hero p {
-        font-size: 16px;
-        line-height: 1.65;
+        font-size: 15px;
     }
 
-    .button {
-        padding: 13px 20px;
-        font-size: 13px;
+    .hero .button {
+        width: 100%;
+        margin: 6px 0;
     }
+
+}
 
 
     /* Focus Areas */
@@ -1260,7 +1360,10 @@
         </a>
 
     </div>
-
+<div class="hero-earth">
+    <div class="hero-earth-glow"></div>
+    <canvas id="earthCanvas"></canvas>
+</div>
 </section>
 
 
@@ -1755,7 +1858,130 @@
 </p>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
+    <script>
+    const earthCanvas = document.getElementById("earthCanvas");
+
+    const earthScene = new THREE.Scene();
+
+    const earthCamera = new THREE.PerspectiveCamera(
+        45,
+        earthCanvas.clientWidth / earthCanvas.clientHeight,
+        0.1,
+        1000
+    );
+
+    const earthRenderer = new THREE.WebGLRenderer({
+        canvas: earthCanvas,
+        alpha: true,
+        antialias: true
+    });
+
+    earthRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    earthRenderer.setSize(
+        earthCanvas.clientWidth,
+        earthCanvas.clientHeight,
+        false
+    );
+
+    /* Earth */
+
+    const earthGeometry = new THREE.SphereGeometry(2, 64, 64);
+
+    const earthMaterial = new THREE.MeshPhongMaterial({
+        color: 0x167dff,
+        shininess: 18,
+        specular: 0x66b5ff
+    });
+
+    const earth = new THREE.Mesh(
+        earthGeometry,
+        earthMaterial
+    );
+
+    earthScene.add(earth);
+
+    /* Atmosphere Glow */
+
+    const atmosphereGeometry =
+        new THREE.SphereGeometry(2.08, 64, 64);
+
+    const atmosphereMaterial =
+        new THREE.MeshBasicMaterial({
+            color: 0x3fa9ff,
+            transparent: true,
+            opacity: 0.16,
+            side: THREE.BackSide
+        });
+
+    const atmosphere = new THREE.Mesh(
+        atmosphereGeometry,
+        atmosphereMaterial
+    );
+
+    earthScene.add(atmosphere);
+
+    /* Lighting */
+
+    const ambientLight =
+        new THREE.AmbientLight(0xffffff, 0.45);
+
+    earthScene.add(ambientLight);
+
+    const sunLight =
+        new THREE.DirectionalLight(0xffffff, 1.8);
+
+    sunLight.position.set(5, 3, 5);
+
+    earthScene.add(sunLight);
+
+    /* Camera */
+
+    earthCamera.position.z = 5.2;
+
+    /* Rotation */
+
+    function animateEarth() {
+
+        requestAnimationFrame(animateEarth);
+
+        earth.rotation.y += 0.0025;
+
+        atmosphere.rotation.y += 0.0018;
+
+        earthRenderer.render(
+            earthScene,
+            earthCamera
+        );
+    }
+
+    animateEarth();
+
+    /* Responsive */
+
+    function resizeEarth() {
+
+        const width = earthCanvas.clientWidth;
+        const height = earthCanvas.clientHeight;
+
+        earthCamera.aspect = width / height;
+
+        earthCamera.updateProjectionMatrix();
+
+        earthRenderer.setSize(
+            width,
+            height,
+            false
+        );
+    }
+
+    window.addEventListener(
+        "resize",
+        resizeEarth
+    );
+</script>
     const menuToggle = document.querySelector(".menu-toggle");
     const mainNav = document.querySelector("#main-nav");
 
