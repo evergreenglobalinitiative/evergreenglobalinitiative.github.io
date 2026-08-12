@@ -1424,64 +1424,70 @@
 </section>
 
 <section class="about" id="about">
-    <section class="about" id="about">
 
     <div class="about-container">
 
         <div class="about-heading">
-
             <span class="about-label">WHO WE ARE</span>
 
             <h2>
-                Small Actions.<br>
-                <span>Lasting Impact.</span>
+               Building a Greener Future.<br>
+                <span>Creating Lasting Impact.</span>
             </h2>
 
+            <p class="about-mini">
+                A youth-driven initiative for a greener and more sustainable future.
+            </p>
         </div>
-
 
         <div class="about-content">
 
             <p class="about-lead">
-                EverGreen Global Initiative (EGI) is a youth-driven
-                initiative established in 2026 with a vision to inspire
-                people to take meaningful action for a greener and
-                more sustainable future.
+                We bring together students, youth, volunteers, professionals
+                and communities to transform environmental awareness
+                into practical action through campaigns, education,
+                collaboration and community engagement.
             </p>
 
             <p>
-                We bring together students, youth, volunteers,
-                professionals and communities to transform environmental
-                awareness into practical action.
+                EGI brings together students, young people, volunteers,
+                professionals and communities to participate in practical
+                environmental and sustainability initiatives.
             </p>
 
             <p>
-                From planting trees and conserving water to promoting
-                climate action, environmental awareness and sustainable
-                agriculture, EGI believes that meaningful change begins
-                when people choose to act.
+                Our work focuses on climate action, plantation, water conservation,
+                sustainable agriculture, responsible consumption and environmental
+                awareness. Through campaigns, activities, learning opportunities
+                and community engagement, we aim to make sustainability more
+                accessible and actionable.
+            </p>
+
+            <p>
+                We believe that lasting environmental change does not begin with
+                large promises. It begins with people taking small, consistent
+                actions — together.
             </p>
 
         </div>
 
     </div>
 
-
     <div class="about-values">
 
         <div>
             <strong>01</strong>
-            <span>People</span>
+            <span>Awareness</span>
         </div>
 
         <div>
             <strong>02</strong>
-            <span>Planet</span>
+            <span>Action</span>
         </div>
 
         <div>
             <strong>03</strong>
-            <span>Progress</span>
+            <span>Impact</span>
         </div>
 
     </div>
@@ -1604,7 +1610,7 @@
     </div>
 
 </section>
-    </p>
+    
 <section class="activities" id="activities">
 
     <div class="activities-header">
@@ -1619,9 +1625,11 @@
         </h2>
 
         <p>
-            From planting trees to inspiring climate action, EGI creates
-            opportunities for people to turn environmental awareness
-            into meaningful action.
+            Our work focuses on plantation, climate action, water conservation,
+                sustainable agriculture, responsible consumption and
+                environmental awareness. We believe meaningful change
+                begins when people choose to act and grows when
+                communities act together.
         </p>
 
     </div>
@@ -1775,8 +1783,6 @@
 
 </section>
 
-</section>
-</section>
 <section class="internship">
 
     <h2>EverGreen Internship Programme 2026</h2>
@@ -1859,100 +1865,94 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
 <script>
-    <script>
-    const earthCanvas = document.getElementById("earthCanvas");
+const earthCanvas = document.getElementById("earthCanvas");
 
-    const earthScene = new THREE.Scene();
+const earthScene = new THREE.Scene();
 
-    const earthCamera = new THREE.PerspectiveCamera(
-        45,
-        earthCanvas.clientWidth / earthCanvas.clientHeight,
-        0.1,
-        1000
-    );
+const earthCamera = new THREE.PerspectiveCamera(
+    45,
+    earthCanvas.clientWidth / earthCanvas.clientHeight,
+    0.1,
+    1000
+);
 
-    const earthRenderer = new THREE.WebGLRenderer({
-        canvas: earthCanvas,
-        alpha: true,
-        antialias: true
-    });
-
-    earthRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-    earthRenderer.setSize(
-        earthCanvas.clientWidth,
-        earthCanvas.clientHeight,
-        false
-    );
-
-    /* Earth */
-
-    const earthGeometry = new THREE.SphereGeometry(2, 64, 64);
-
-    const earthMaterial = new THREE.MeshPhongMaterial({
-        const earthMaterial = new THREE.MeshPhongMaterial({
-    color: 0xffffff,
-    shininess: 25,
-    specular: 0x5599cc,
-    map: new THREE.TextureLoader().load(
-        "https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg"
-    ),
-    bumpMap: new THREE.TextureLoader().load(
-        "https://threejs.org/examples/textures/planets/earth_normal_2048.jpg"
-    ),
-    bumpScale: 0.035
+const earthRenderer = new THREE.WebGLRenderer({
+    canvas: earthCanvas,
+    alpha: true,
+    antialias: true
 });
+
+earthRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+earthRenderer.setSize(
+    earthCanvas.clientWidth,
+    earthCanvas.clientHeight,
+    false
+);
+
+
+/* EARTH */
+
+const earthGeometry = new THREE.SphereGeometry(2, 64, 64);
+
+const earthTexture = new THREE.TextureLoader().load(
+    "https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg"
+);
+
+const earthNormal = new THREE.TextureLoader().load(
+    "https://threejs.org/examples/textures/planets/earth_normal_2048.jpg"
+);
+
+const earthMaterial = new THREE.MeshPhongMaterial({
+    map: earthTexture,
+    bumpMap: earthNormal,
+    bumpScale: 0.035,
+    shininess: 25,
+    specular: 0x5599cc
+});
+
+const earth = new THREE.Mesh(
+    earthGeometry,
+    earthMaterial
+);
+
+earthScene.add(earth);
+
+
+/* ATMOSPHERE */
+
+const atmosphereGeometry =
+    new THREE.SphereGeometry(2.08, 64, 64);
+
+const atmosphereMaterial =
+    new THREE.MeshBasicMaterial({
+        color: 0x3fa9ff,
+        transparent: true,
+        opacity: 0.16,
+        side: THREE.BackSide
     });
 
-    const earth = new THREE.Mesh(
-        earthGeometry,
-        earthMaterial
-    );
+const atmosphere = new THREE.Mesh(
+    atmosphereGeometry,
+    atmosphereMaterial
+);
 
-    earthScene.add(earth);
+earthScene.add(atmosphere);
 
-    /* Atmosphere Glow */
 
-    const atmosphereGeometry =
-        new THREE.SphereGeometry(2.08, 64, 64);
+/* CLOUDS */
 
-    const atmosphereMaterial =
-        new THREE.MeshBasicMaterial({
-            color: 0x3fa9ff,
-            transparent: true,
-            opacity: 0.16,
-            side: THREE.BackSide
-        });
+const cloudGeometry =
+    new THREE.SphereGeometry(2.025, 64, 64);
 
-    const atmosphere = new THREE.Mesh(
-        atmosphereGeometry,
-        atmosphereMaterial
-    );
-
-    earthScene.add(atmosphere);
-
-    /* Lighting */
-
-    const ambientLight =
-        new THREE.AmbientLight(0xffffff, 0.45);
-
-    earthScene.add(ambientLight);
-
-    const sunLight =
-        new THREE.DirectionalLight(0xffffff, 1.8);
-
-    sunLight.position.set(5, 3, 5);
-
-    earthScene.add(sunLight);
-/* Premium Cloud Layer */
-
-const cloudGeometry = new THREE.SphereGeometry(2.025, 64, 64);
+const cloudTexture = new THREE.TextureLoader().load(
+    "https://threejs.org/examples/textures/planets/earth_clouds_1024.png"
+);
 
 const cloudMaterial = new THREE.MeshPhongMaterial({
-    map: new THREE.TextureLoader().load(
-        "https://threejs.org/examples/textures/planets/earth_clouds_1024.png"
-    ),
+    map: cloudTexture,
     transparent: true,
     opacity: 0.55,
     depthWrite: false
@@ -1964,62 +1964,97 @@ const clouds = new THREE.Mesh(
 );
 
 earthScene.add(clouds);
-    /* Camera */
 
-    earthCamera.position.z = 5.2;
 
-    /* Rotation */
+/* LIGHT */
 
-    function animateEarth() {
+const ambientLight =
+    new THREE.AmbientLight(0xffffff, 0.45);
 
-        requestAnimationFrame(animateEarth);
+earthScene.add(ambientLight);
 
-        earth.rotation.y += 0.0025;
-clouds.rotation.y += 0.0032;
-        atmosphere.rotation.y += 0.0018;
+const sunLight =
+    new THREE.DirectionalLight(0xffffff, 1.8);
 
-        earthRenderer.render(
-            earthScene,
-            earthCamera
-        );
-    }
+sunLight.position.set(5, 3, 5);
 
-    animateEarth();
+earthScene.add(sunLight);
 
-    /* Responsive */
 
-    function resizeEarth() {
+/* CAMERA */
 
-        const width = earthCanvas.clientWidth;
-        const height = earthCanvas.clientHeight;
+earthCamera.position.z = 5.2;
 
-        earthCamera.aspect = width / height;
 
-        earthCamera.updateProjectionMatrix();
+/* ANIMATION */
 
-        earthRenderer.setSize(
-            width,
-            height,
-            false
-        );
-    }
+function animateEarth() {
 
-    window.addEventListener(
-        "resize",
-        resizeEarth
+    requestAnimationFrame(animateEarth);
+
+    earth.rotation.y += 0.0025;
+
+    clouds.rotation.y += 0.0032;
+
+    atmosphere.rotation.y += 0.0018;
+
+    earthRenderer.render(
+        earthScene,
+        earthCamera
     );
+}
+
+animateEarth();
+
+
+/* RESPONSIVE */
+
+function resizeEarth() {
+
+    const width = earthCanvas.clientWidth;
+    const height = earthCanvas.clientHeight;
+
+    earthCamera.aspect = width / height;
+
+    earthCamera.updateProjectionMatrix();
+
+    earthRenderer.setSize(
+        width,
+        height,
+        false
+    );
+}
+
+window.addEventListener(
+    "resize",
+    resizeEarth
+);
+
+
+/* MOBILE MENU */
+
+const menuToggle =
+    document.querySelector(".menu-toggle");
+
+const mainNav =
+    document.querySelector("#main-nav");
+
+menuToggle.addEventListener("click", () => {
+
+    mainNav.classList.toggle("active");
+
+});
+
+document.querySelectorAll("#main-nav a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        mainNav.classList.remove("active");
+
+    });
+
+});
 </script>
-    const menuToggle = document.querySelector(".menu-toggle");
-    const mainNav = document.querySelector("#main-nav");
-
-    menuToggle.addEventListener("click", () => {
-        mainNav.classList.toggle("active");
-    });
-
-    document.querySelectorAll("#main-nav a").forEach(link => {
-        link.addEventListener("click", () => {
-            mainNav.classList.remove("active");
-        });
-    });
+    
 </script></body>
 </html>
