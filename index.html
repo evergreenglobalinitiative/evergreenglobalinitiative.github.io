@@ -1891,9 +1891,18 @@
     const earthGeometry = new THREE.SphereGeometry(2, 64, 64);
 
     const earthMaterial = new THREE.MeshPhongMaterial({
-        color: 0x167dff,
-        shininess: 18,
-        specular: 0x66b5ff
+        const earthMaterial = new THREE.MeshPhongMaterial({
+    color: 0xffffff,
+    shininess: 25,
+    specular: 0x5599cc,
+    map: new THREE.TextureLoader().load(
+        "https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg"
+    ),
+    bumpMap: new THREE.TextureLoader().load(
+        "https://threejs.org/examples/textures/planets/earth_normal_2048.jpg"
+    ),
+    bumpScale: 0.035
+});
     });
 
     const earth = new THREE.Mesh(
@@ -1936,7 +1945,25 @@
     sunLight.position.set(5, 3, 5);
 
     earthScene.add(sunLight);
+/* Premium Cloud Layer */
 
+const cloudGeometry = new THREE.SphereGeometry(2.025, 64, 64);
+
+const cloudMaterial = new THREE.MeshPhongMaterial({
+    map: new THREE.TextureLoader().load(
+        "https://threejs.org/examples/textures/planets/earth_clouds_1024.png"
+    ),
+    transparent: true,
+    opacity: 0.55,
+    depthWrite: false
+});
+
+const clouds = new THREE.Mesh(
+    cloudGeometry,
+    cloudMaterial
+);
+
+earthScene.add(clouds);
     /* Camera */
 
     earthCamera.position.z = 5.2;
@@ -1948,7 +1975,7 @@
         requestAnimationFrame(animateEarth);
 
         earth.rotation.y += 0.0025;
-
+clouds.rotation.y += 0.0032;
         atmosphere.rotation.y += 0.0018;
 
         earthRenderer.render(
